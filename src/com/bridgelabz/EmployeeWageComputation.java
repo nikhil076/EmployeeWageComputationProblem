@@ -3,40 +3,40 @@ package com.bridgelabz;
 public class EmployeeWageComputation {
 	public static final int IS_FULLTIME_PRESENT = 1;
 	public static final int IS_PARTTIME_PRESENT = 2;
-	public static final int FULL_DAY = 8;
-	public static final int PART_TIME = 4;
-	public static final int WORKING_DAYS_PER_MONTH = 20;
+	public static final int MAX_HOURS_ALLOWED = 100;
+	public static final int DAYS_IN_A_MONTH = 20;
 	public static final int WAGE_PER_DAY = 20;
 	
-	public static void main(String args[]) {
-		System.out.println("Welcome to wage computation problem");
-		
-		
+	public static void main(String args[]) {		
+		int TOTAL_WORKING_HOURS = 0;
+		int TOTAL_WORKING_DAYS = 0;
 		int MONTHLY_WAGE = 0;
 		
-		for (int i=0; i<WORKING_DAYS_PER_MONTH; i++)
-		{
-			int DAILY_WAGE = 0;
-			double empCheck = Math.floor(Math.random() * 10 ) % 3;
-			System.out.println(empCheck);
+		while(TOTAL_WORKING_HOURS<MAX_HOURS_ALLOWED && TOTAL_WORKING_DAYS<DAYS_IN_A_MONTH){
 			
+			int DAILY_WAGE = 0;
+			TOTAL_WORKING_DAYS++;
+			int EMP_HOURS=0;
+			
+			double empCheck = Math.floor(Math.random() * 10 ) % 3;			
 			switch ((int)empCheck) {
 			case IS_FULLTIME_PRESENT : 
-				DAILY_WAGE = WAGE_PER_DAY * FULL_DAY;
-				System.out.println("Employee is present for full day");
+				EMP_HOURS = 8;
 				break;
 				
 			case IS_PARTTIME_PRESENT :
-				DAILY_WAGE = WAGE_PER_DAY * PART_TIME;
-				System.out.println("Employee is present for part time");
+				EMP_HOURS = 4;
 				break;
 			
 			default:
-				System.out.println("Employee is absent");
+				EMP_HOURS = 0;
 			}
-			System.out.println("Employee wage is "+DAILY_WAGE);
+			DAILY_WAGE = WAGE_PER_DAY * EMP_HOURS;
+			TOTAL_WORKING_HOURS += EMP_HOURS;
 			MONTHLY_WAGE = MONTHLY_WAGE + DAILY_WAGE;
 		}
+		System.out.println("Total Working Days :"+TOTAL_WORKING_DAYS);
+		System.out.println("Total Wokking hours :"+TOTAL_WORKING_HOURS);
 		System.out.println("Monthly employee wage :"+MONTHLY_WAGE);
 	}
 }
