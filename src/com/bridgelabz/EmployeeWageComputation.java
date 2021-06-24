@@ -8,35 +8,35 @@ public class EmployeeWageComputation {
 	public static final int WAGE_PER_DAY = 20;
 	
 	public static void main(String args[]) {		
-		int TOTAL_WORKING_HOURS = 0;
-		int TOTAL_WORKING_DAYS = 0;
-		int MONTHLY_WAGE = 0;
+		int total_working_hours = 0;
+		int total_working_days = 0;
+		int monthly_wage = 0;
 		
-		while(TOTAL_WORKING_HOURS<MAX_HOURS_ALLOWED && TOTAL_WORKING_DAYS<DAYS_IN_A_MONTH){
+		while(total_working_hours<MAX_HOURS_ALLOWED && total_working_days<DAYS_IN_A_MONTH){
 			
-			int DAILY_WAGE = 0;
-			TOTAL_WORKING_DAYS++;
-			int EMP_HOURS=0;
+			int daily_wage = 0;
+			total_working_days++;
+			int emp_hours=0;
 			
 			double empCheck = Math.floor(Math.random() * 10 ) % 3;			
 			switch ((int)empCheck) {
-			case IS_FULLTIME_PRESENT : 
-				EMP_HOURS = 8;
-				break;
+				case IS_FULLTIME_PRESENT : 
+					emp_hours = 8;
+					break;
+					
+				case IS_PARTTIME_PRESENT :
+					emp_hours = 4;
+					break;
 				
-			case IS_PARTTIME_PRESENT :
-				EMP_HOURS = 4;
-				break;
-			
-			default:
-				EMP_HOURS = 0;
-			}
-			DAILY_WAGE = WAGE_PER_DAY * EMP_HOURS;
-			TOTAL_WORKING_HOURS += EMP_HOURS;
-			MONTHLY_WAGE = MONTHLY_WAGE + DAILY_WAGE;
+				default:
+					emp_hours = 0;
+				}
+			daily_wage = WAGE_PER_DAY * emp_hours;
+			total_working_hours += emp_hours;
+			monthly_wage = monthly_wage + daily_wage;
 		}
-		System.out.println("Total Working Days :"+TOTAL_WORKING_DAYS);
-		System.out.println("Total Wokking hours :"+TOTAL_WORKING_HOURS);
-		System.out.println("Monthly employee wage :"+MONTHLY_WAGE);
+		System.out.println("Total Working Days :"+total_working_days);
+		System.out.println("Total Wokking hours :"+total_working_hours);
+		System.out.println("Monthly employee wage :"+monthly_wage);
 	}
 }
